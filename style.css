@@ -1,72 +1,46 @@
-/* Reset simples */
+*,*::before,*::after{ box-sizing:border-box; }
+body{ margin:0; font-family:system-ui, Arial, sans-serif; line-height:1.5; color:#222; background:#f7f7f7; }
+
+.container{ width:min(100%, 1100px); margin-inline:auto; padding:16px; }
+
+header{ background:#0a66c2; color:#fff; }
+header .row{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+.brand{ font-weight:700; font-size:1.1rem; }
+nav{ display:flex; gap:10px; flex-wrap:wrap; }
+nav a{ color:#fff; text-decoration:none; padding:6px 10px; border-radius:6px; }
+nav a:hover, nav a.active{ background:rgba(255,255,255,.15); }
+
+main{ padding:16px; }
+.card, .hero{ background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
+.grid{ display:grid; gap:16px; margin-top:16px; }
+img{ max-width:100%; height:auto; display:block; border-radius:10px; }
+
+footer{ background:#0a66c2; color:#fff; }
+footer .container{ text-align:center; padding-block:16px; }
+
+h1{ font-size:clamp(1.25rem, 2.2vw + 0.5rem, 2rem); margin:0 0 8px; }
+h2{ font-size:1.25rem; margin:0 0 8px; }
+
+@media (min-width:640px){
+  .grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width:960px){
+  .grid{ grid-template-columns:repeat(3,1fr); }
+}
+
+
+html, body {
+  height: 100%;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
-  color: #333;
+  min-height: 100svh;          
+  display: flex;
+  flex-direction: column;
 }
 
-/* Cabeçalho */
-header {
-  background: #0077cc;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
+#header { flex: 0 0 auto; }
+main    { flex: 1 0 auto; }    
+#footer { flex: 0 0 auto; }
 
-header h1 {
-  margin: 0;
-  font-size: 50px;
-}
-
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Conteúdo principal */
-main {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-/* Rodapé */
-footer {
-  background: #0077cc;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 18px;
-  }
-
-  nav a {
-    display: block;
-    margin: 5px 0;
-  }
-
-  main {
-    margin: 10px;
-    padding: 15px;
-  }
-}
+footer { width: 100%; }

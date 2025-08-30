@@ -1,22 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página Inicial</title>
   <link rel="stylesheet" href="style.css">
   <script src="include.js" defer></script>
 </head>
 <body>
-  <!-- Cabeçalho -->
-  <div id="site-header"></div>
+  <div id="header"></div>
 
-  <!-- Conteúdo -->
-  <main>
-    <h2>Bem-vindo ao meu site</h2>
-    <p>Essa é a página inicial.</p>
+  <main class="container">
+    <section class="hero">
+      <h1>Bem-vindo!</h1>
+      <p>Layout responsivo com header e footer reaproveitados via include.</p>
+      <img src="https://picsum.photos/1200/400" alt="Banner ilustrativo">
+    </section>
+
+    <section class="grid">
+      <article class="card"><h2>Card 1</h2><p>Conteúdo exemplo.</p></article>
+      <article class="card"><h2>Card 2</h2><p>Conteúdo exemplo.</p></article>
+      <article class="card"><h2>Card 3</h2><p>Conteúdo exemplo.</p></article>
+    </section>
   </main>
 
-  <!-- Rodapé -->
-  <div id="site-footer"></div>
+  <div id="footer"></div>
 </body>
 </html>
