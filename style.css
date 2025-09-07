@@ -4,9 +4,7 @@ body{ margin:0; font-family:system-ui, Arial, sans-serif; line-height:1.5; color
 .container{ width:min(100%, 1100px); margin-inline:auto; padding:16px; }
 
 header{ background:#0a66c2; color:#fff; }
-header .row{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
-.brand{ font-weight:700; font-size:1.1rem; }
-nav{ display:flex; gap:10px; flex-wrap:wrap; }
+
 nav a{ color:#fff; text-decoration:none; padding:6px 10px; border-radius:6px; }
 nav a:hover, nav a.active{ background:rgba(255,255,255,.15); }
 
@@ -22,7 +20,7 @@ h1{ font-size:clamp(1.25rem, 2.2vw + 0.5rem, 2rem); margin:0 0 8px; }
 h2{ font-size:1.25rem; margin:0 0 8px; }
 
 @media (min-width:640px){
-  .grid{ grid-template-columns:repeat(2,1fr); }
+  .grid{ grid-template-columns:repeat(2,1fr); }   
 }
 @media (min-width:960px){
   .grid{ grid-template-columns:repeat(3,1fr); }
@@ -44,3 +42,58 @@ main    { flex: 1 0 auto; }
 #footer { flex: 0 0 auto; }
 
 footer { width: 100%; }
+
+/* brand: logo + nome lado a lado */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;   /* mantém sua tipografia */
+  font-size:1.1rem;  /* mantém seu tamanho */
+}
+
+.brand .logo{
+  height:100px;       /* controla o tamanho do logo */
+  width:auto;
+  display:block;
+  border-radius:0;   /* garante que o logo não arredonde */
+}
+
+/* imagem do topo ocupa 100% da largura e “corta” mantendo proporção */
+.header-image img{
+  width: 100%;
+  height: clamp(140px, 22vw, 280px);  /* altura responsiva */
+  object-fit: cover;
+  display: block;
+}
+
+/* bloco do nome da empresa */
+.brand{
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.2vw + 1rem, 1.8rem);
+  color: #fff;
+  margin: 10px 0 6px;
+}
+
+/* menu centralizado logo abaixo do nome */
+header nav{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+header nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:6px;
+}
+
+header nav a:hover,
+header nav a.active{
+  background:rgba(255,255,255,.15);
+}
+
