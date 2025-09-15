@@ -1,6 +1,4 @@
-// =======================
-// DOCUMENT READY
-// =======================
+// Inicio------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
 
   // =======================
