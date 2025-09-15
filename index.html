@@ -1,29 +1,266 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Página Inicial</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="include.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burguer HUB</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="header"></div>
+<header>
+    <div class="header-container">
+        <img src="img/burguerhub_logo.png" alt="Logo Burguer HUB" class="logo">
+        <h1>Burguer HUB</h1>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Bem-vindo!</h1>
-      <p>Layout responsivo com header e footer reaproveitados via include.</p>
-      <img src="https://picsum.photos/1200/400" alt="Banner ilustrativo">
-    </section>
+<div id="sacola" class="sacola">
+  <div class="sacola-header">
+    <h2>Sua Sacola</h2>
+    <button class="fechar-sacola" onclick="fecharSacola()">×</button>
+  </div>
+  <button class="btn-limpar" onclick="limparSacola()">Limpar Sacola</button>
+  <ul id="sacola-itens"></ul>
+  <p id="sacola-total"><strong>Total:</strong> R$ 0,00</p>
 
-    <section class="grid">
-      <article class="card"><h2>Card 1</h2><p>Conteúdo exemplo.</p></article>
-      <article class="card"><h2>Card 2</h2><p>Conteúdo exemplo.</p></article>
-      <article class="card"><h2>Card 3</h2><p>Conteúdo exemplo.</p></article>
-    </section>
-  </main>
+<div class="opcoes-pagamento">
+  <h4>Forma de Pagamento:</h4>
+  <div class="item-pagamento">
+    <input type="radio" id="pix" name="pagamento" value="Pix" checked>
+    <label for="pix">Pix</label>
+  </div>
+  <div class="item-pagamento">
+    <input type="radio" id="cartao" name="pagamento" value="Cartão">
+    <label for="cartao">Cartão</label>
+  </div>
+  <div class="item-pagamento">
+    <input type="radio" id="dinheiro" name="pagamento" value="Dinheiro">
+    <label for="dinheiro">Dinheiro</label>
+  </div>
+  </div>
+  <button class="btn-enviar" onclick="abrirModalEntrega()">Finalizar Pedido</button>
+</div>
 
-  <div id="footer"></div>
+<button id="abrir-sacola" class="sacola-btn" onclick="abrirSacola()">
+  🛒 <span id="contador-sacola">0</span>
+</button>
+
+<section id="sobre">
+    <h2>Sobre a Burguer HUB</h2>
+    <p>Bem-vindos à Burguer HUB, onde a tecnologia encontra o sabor! Somos uma hamburgueria inovadora que combina a paixão pela gastronomia com a criatividade do mundo digital. Nossos hambúrgueres são criados com ingredientes frescos e de alta qualidade, inspirados no universo tecnológico que nos cerca.</p>
+    <p>Cada hambúrguer em nosso cardápio tem uma personalidade única, desenvolvida para proporcionar uma experiência gastronômica que vai além do sabor - é uma verdadeira conexão entre o mundo físico e digital. Venha descobrir como a inovação pode ser deliciosa!</p>
+</section>
+
+<section id="cardapio">
+    <h2>Nossos Lanches</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <img src="img/byte-burger.png" alt="Byte Burger on a brioche bun with cheddar cheese, lettuce, tomato, and special house sauce arranged on a white plate in a modern restaurant setting. The burger looks juicy and inviting, evoking a sense of comfort and satisfaction. No visible text." class="burger-image" onclick="openModal('img/byte-burger.png', 'Byte Burger')">
+            <div class="menu-item-content">
+                <h3>Byte Burger</h3>
+                <p>Um hambúrguer clássico com um toque digital. Pão brioche, hambúrguer de carne bovina suculenta, queijo cheddar derretido, alface crocante, tomate fresco e um molho especial da casa com um leve sabor defumado, que remete à complexidade de um algoritmo bem executado.</p>
+            </div>
+            <div class="burger-price">R$ 31,90</div>
+            <button onclick="adicionarASacola('Byte Burger', 31.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/pixel-patty.png" alt="Pixel Patty chicken burger with Australian bread, mozzarella cheese, crispy bacon, caramelized onions, and sweet chili sauce served on a wooden board in a lively restaurant. The burger is stacked high and colorful, creating a playful and vibrant mood. No visible text." class="burger-image" onclick="openModal('img/pixel-patty.png', 'Pixel Patty')">
+            <div class="menu-item-content">
+                <h3>Pixel Patty</h3>
+                <p>Uma explosão de sabores em cada mordida, como pixels se unindo para formar uma imagem perfeita. Pão australiano, hambúrguer de frango empanado, queijo mussarela, bacon crocante, cebola caramelizada e um molho agridoce de pimenta, criando uma paleta de sabores vibrante.</p>
+            </div>
+            <div class="burger-price">R$ 34,90</div>
+            <button onclick="adicionarASacola('Pixel Patty', 34.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/quantum-quinoa.png" alt="Quantum Quinoa vegan burger with quinoa and mushroom patty, vegan cheese, arugula, pickled cucumber, and basil pesto on whole wheat bread, placed on a rustic table in a bright, eco-friendly restaurant. The burger appears fresh and healthy, conveying a sense of innovation and well-being. No visible text." class="burger-image" onclick="openModal('img/quantum-quinoa.png', 'Quantum Quinoa')">
+            <div class="menu-item-content">
+                <h3>Quantum Quinoa</h3>
+                <p>Para os que buscam uma experiência leve e inovadora, este hambúrguer vegano desafia as leis da física. Pão integral, hambúrguer de quinoa e cogumelos, queijo vegano, rúcula, pepino em conserva e um molho pesto de manjericão, proporcionando uma fusão de texturas e frescor.</p>
+            </div>
+            <div class="burger-price">R$ 37,90</div>
+            <button onclick="adicionarASacola('Quantum Quinoa', 37.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/circuit-cheese.png" alt="Circuit Cheese beef burger with beer bread, melted cheese blend, onion rings, and spicy barbecue sauce served on a ceramic plate in a cozy restaurant. The burger is topped with golden onion rings and melted cheese, creating a rich and indulgent atmosphere. No visible text." class="burger-image" onclick="openModal('img/circuit-cheese.png', 'Circuit Cheese')">
+            <div class="menu-item-content">
+                <h3>Circuit Cheese</h3>
+                <p>Uma conexão perfeita de queijos que energiza o paladar. Pão de cerveja, hambúrguer de carne bovina, uma combinação de queijos prato, provolone e gorgonzola derretidos, anéis de cebola empanados e um molho barbecue picante, criando um circuito de sabor intenso.</p>
+            </div>
+            <div class="burger-price">R$ 42,90</div>
+            <button onclick="adicionarASacola('Circuit Cheese', 42.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/neural-noodle.png" alt="Neural Noodle pulled pork burger with sesame bun, purple cabbage and carrot coleslaw, crispy sweet potato, and teriyaki ginger sauce on a slate plate in a contemporary restaurant. The burger is colorful and artistic, evoking curiosity and excitement. No visible text." class="burger-image" onclick="openModal('img/neural-noodle.png', 'Neural Noodle')">
+            <div class="menu-item-content">
+                <h3>Neural Noodle</h3>
+                <p>Uma rede complexa de sabores que estimula os sentidos, como uma rede neural em pleno funcionamento. Pão de gergelim, hambúrguer de carne suína desfiada, coleslaw de repolho roxo e cenoura, crispy de batata doce e um molho teriyaki com gengibre, oferecendo uma experiência asiática e inovadora.</p>
+            </div>
+            <div class="burger-price">R$ 49,90</div>
+            <button onclick="adicionarASacola('Neural Noodle', 49.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/data-stream-deluxe.png" alt="Data Stream Deluxe double Angus beef burger with chia seed bun, Swiss cheese, grilled portobello mushrooms, wild arugula, sun-dried tomatoes, caramelized red onions, and Dijon honey mustard sauce on a stylish plate in an upscale restaurant. The burger looks luxurious and sophisticated, suggesting a premium dining experience. No visible text." class="burger-image" onclick="openModal('img/data-stream-deluxe.png', 'Data Stream Deluxe')">
+            <div class="menu-item-content">
+                <h3>Data Stream Deluxe</h3>
+                <p>Uma experiência premium que processa sabores em alta velocidade. Pão artesanal com sementes de chia, duplo hambúrguer de carne angus, queijo suíço derretido, cogumelos portobello grelhados, rúcula selvagem, tomate seco, cebola roxa caramelizada e um molho especial de mostarda dijon com mel, criando um fluxo contínuo de sabores sofisticados que conecta tradição e inovação em cada mordida.</p>
+            </div>
+            <div class="burger-price">R$ 55,90</div>
+            <button onclick="adicionarASacola('Data Stream Deluxe', 55.90)">Adicionar à Sacola</button>
+        </div>
+    </div>
+</section>
+
+<section id="sobremesas">
+    <h2>Sobremesas</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <img src="img/cloud-storage-sundae.png" alt="Cloud Storage Sundae with vanilla ice cream, hot Belgian chocolate sauce, whipped cream, brownie pieces, caramelized nuts, and a cherry on top served in a glass bowl on a marble table in a cheerful dessert shop. The sundae looks decadent and joyful, inviting indulgence. No visible text." class="sobremesa-image" onclick="openModal('img/cloud-storage-sundae.png', 'Cloud Storage Sundae')">
+            <div class="menu-item-content">
+                <h3>Cloud Storage Sundae</h3>
+                <p>Uma sobremesa que armazena camadas infinitas de sabor. Sorvete de baunilha premium, calda quente de chocolate belga, chantilly aerado, pedaços crocantes de brownie, castanhas caramelizadas e uma cereja digital no topo.</p>
+            </div>
+            <div class="sobremesa-price">R$ 19,90</div>
+            <button onclick="adicionarASacola('Cloud Storage Sundae', 19.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/pixel-parfait.png" alt="Pixel Parfait with layers of berry mousse, mascarpone cream, cookies and cream biscuit, strawberry jam, and crunchy granola in a tall glass on a wooden table in a bright café. The parfait is colorful and neatly layered, creating a sense of harmony and delight. No visible text." class="sobremesa-image" onclick="openModal('img/pixel-parfait.png', 'Pixel Parfait')">
+            <div class="menu-item-content">
+                <h3>Pixel Parfait</h3>
+                <p>Camadas alternadas de mousse de frutas vermelhas, creme de mascarpone, biscoito cookies & cream, geleia de morango artesanal e granola crocante, criando um mosaico de sabores que se conectam perfeitamente.</p>
+            </div>
+            <div class="sobremesa-price">R$ 22,90</div>
+            <button onclick="adicionarASacola('Pixel Parfait', 22.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/binary-brownie.png" alt="Binary Brownie with warm dark chocolate brownie, vanilla ice cream, salted caramel sauce, toasted pecans, and a sprinkle of sea salt served on a white plate in a cozy dessert bar. The dessert looks rich and comforting, evoking warmth and happiness. No visible text." class="sobremesa-image" onclick="openModal('img/binary-brownie.png', 'Binary Brownie')">
+            <div class="menu-item-content">
+                <h3>Binary Brownie</h3>
+                <p>Brownie de chocolate meio amargo aquecido, acompanhado de sorvete de creme, calda de caramelo salgado, nozes pecã tostadas e uma pitada de flor de sal.</p>
+            </div>
+            <div class="sobremesa-price">R$ 15,90</div>
+            <button onclick="adicionarASacola('Binary Brownie', 15.90)">Adicionar à Sacola</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/wifi-waffle.png" alt="WiFi Waffle Belgian waffle with melted Nutella, caramelized banana, fresh strawberries, whipped cream, and powdered sugar served on a decorative plate in a lively café. The waffle is beautifully arranged and festive, creating a sense of fun and celebration. No visible text." class="sobremesa-image" onclick="openModal('img/wifi-waffle.png', 'WiFi Waffle')">
+            <div class="menu-item-content">
+                <h3>WiFi Waffle</h3>
+                <p>Waffle belga crocante, Nutella derretida, banana caramelizada, morangos frescos, chantilly e uma chuva de açúcar de confeiteiro.</p>
+            </div>
+            <div class="sobremesa-price">R$ 24,90</div>
+            <button onclick="adicionarASacola('WiFi Waffle', 24.90)">Adicionar à Sacola</button>
+        </div>
+    </div>
+</section>
+
+<section id="bebidas">
+    <h2>Bebidas Temáticas</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <img src="img/pixel-cola.png" alt="Pixel Cola com bolhas coloridas e limão" class="bebida-image" onclick="openModal('img/pixel-cola.png', 'Pixel Cola')">
+            <div class="menu-item-content">
+                <h3>Pixel Cola</h3>
+                <p>Refrigerante de cola com bolhas cintilantes que lembram pixels em movimento. Servido com gelo transparente e uma rodela de limão "digital".</p>
+            </div>
+            <div class="bebida-price">R$ 9,90</div>
+            <button onclick="adicionarASacola('Pixel Cola', 9.90, 'img/pixel-cola.png')">Adicionar à Sacola</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/circuito-citrus.png" alt="Circuito Citrus suco cítrico com canudo espiral" class="bebida-image" onclick="openModal('img/circuito-citrus.png', 'Circuito Citrus')">
+            <div class="menu-item-content">
+                <h3>Circuito Citrus</h3>
+                <p>Suco cítrico de laranja, limão e maracujá com toque de gengibre, servido com canudo em espiral lembrando um circuito eletrônico.</p>
+            </div>
+            <div class="bebida-price">R$ 11,90</div>
+            <button onclick="adicionarASacola('Circuito Citrus', 11.90, 'img/circuito-citrus.png')">Adicionar à Sacola</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/data-stream-shake.png" alt="Data Stream Shake milkshake com calda de caramelo e chantilly" class="bebida-image" onclick="openModal('img/data-stream-shake.png', 'Data Stream Shake')">
+            <div class="menu-item-content">
+                <h3>Data Stream Shake</h3>
+                <p>Milkshake de chocolate com calda de caramelo e chantilly em camadas que lembram fluxos de dados. Finalizado com granulados dourados.</p>
+            </div>
+            <div class="bebida-price">R$ 14,90</div>
+            <button onclick="adicionarASacola('Data Stream Shake', 14.90, 'img/data-stream-shake.png')">Adicionar à Sacola</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/neural-nectar.png" alt="Neural Nectar suco verde energético com efeito vaporizante" class="bebida-image" onclick="openModal('img/neural-nectar.png', 'Neural Nectar')">
+            <div class="menu-item-content">
+                <h3>Neural Nectar</h3>
+                <p>Suco verde energético de kiwi, maçã e hortelã, servido com gelo seco para efeito "vaporizante", inspirado em redes neurais.</p>
+                <p></p>
+            </div>
+            <div class="bebida-price">R$ 13,90</div>
+            <button onclick="adicionarASacola('Neural Nectar', 13.90, 'img/neural-nectar.png')">Adicionar à Sacola</button>
+        </div>
+    </div>
+</section>
+
+<section id="contato">
+    <h2>Envie uma mensagem para nós:</h2>
+    <form class="contato-form">
+        <label for="nome-contato">Nome:</label>
+        <input type="text" id="nome-contato" name="nome" placeholder="Seu nome" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="telefone-contato">Telefone:</label>
+        <input type="tel" id="telefone-contato" name="telefone" placeholder="(xx) xxxxx-xxxx">
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua dúvida ou mensagem..." required></textarea>
+
+        <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+</section>
+
+<!-- MODAL DE ENTREGA - CORRIGIDO -->
+<div id="modalEntrega" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModalEntrega()">&times;</span>
+    <h2>Como você prefere receber seu pedido?</h2>
+    <div class="opcoes-entrega">
+      <button id="btnRetirada" class="btn-entrega">Retirada no Local</button>
+      <button id="btnEntrega" class="btn-entrega">Entrega em Domicílio</button>
+    </div>
+    <div id="enderecoForm" class="hidden">
+      <p>Por favor, informe seus dados e endereço:</p>
+      <input type="text" id="nome-entrega" placeholder="Nome completo" required>
+      <input type="tel" id="telefone-entrega" placeholder="Telefone (xx) xxxxx-xxxx" required>
+      <input type="text" id="endereco-entrega" placeholder="Rua, Número, Bairro" required>
+      <input type="text" id="complemento-entrega" placeholder="Complemento (apto, bloco, etc.)">
+      <button class="btn-enviar" onclick="confirmarEntrega()">Confirmar Endereço</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+    <p>© 2025 Burguer HUB</p>
+</footer>
+
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+</div>
+
+<script src="js/script.js"></script>
+
+<div id="notificacao-sacola" class="notificacao-sacola">
+  <p>Item adicionado à sacola!</p>
+</div>
+
 </body>
 </html>
