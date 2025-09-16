@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,22 +8,164 @@
   <link rel="stylesheet" href="style.css">
   <script src="include.js" defer></script>
 </head>
+
 <body>
   <div id="header"></div>
 
   <main class="container">
-    <section class="hero">
-      <h1>Bem-vindo!</h1>
-      <p>Layout responsivo com header e footer reaproveitados via include.</p>
+    <section id="sobre">
+      <h2>Sobre a Burguer HUB</h2>
+      <p>Bem-vindos à Burguer HUB, onde a tecnologia encontra o sabor! Somos uma hamburgueria inovadora que combina a
+        paixão pela gastronomia com a criatividade do mundo digital. Nossos hambúrgueres são criados com ingredientes
+        frescos e de alta qualidade, inspirados no universo tecnológico que nos cerca.</p>
+      <p>Cada hambúrguer em nosso cardápio tem uma personalidade única, desenvolvida para proporcionar uma experiência
+        gastronômica que vai além do sabor - é uma verdadeira conexão entre o mundo físico e digital. Venha descobrir
+        como a inovação pode ser deliciosa!</p>
     </section>
 
-    <section class="grid">
-      <article class="card"><h2>Card 1</h2><p>Conteúdo exemplo.</p></article>
-      <article class="card"><h2>Card 2</h2><p>Conteúdo exemplo.</p></article>
-      <article class="card"><h2>Card 3</h2><p>Conteúdo exemplo.</p></article>
+    <section id="cardapio">
+      <h2>Nossos Lanches</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="img/byte-burger.png"
+            alt="Byte Burger on a brioche bun with cheddar cheese, lettuce, tomato, and special house sauce arranged on a white plate in a modern restaurant setting. The burger looks juicy and inviting, evoking a sense of comfort and satisfaction. No visible text."
+            class="burger-image" onclick="openModal('img/byte-burger.png', 'Byte Burger')">
+          <div class="menu-item-content">
+            <h3>Byte Burger</h3>
+            <p>Um hambúrguer clássico com um toque digital. Pão brioche, hambúrguer de carne bovina suculenta, queijo
+              cheddar derretido, alface crocante, tomate fresco e um molho especial da casa com um leve sabor defumado,
+              que remete à complexidade de um algoritmo bem executado.</p>
+          </div>
+          <div class="burger-price">R$ 31,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/pixel-patty.png"
+            alt="Pixel Patty chicken burger with Australian bread, mozzarella cheese, crispy bacon, caramelized onions, and sweet chili sauce served on a wooden board in a lively restaurant. The burger is stacked high and colorful, creating a playful and vibrant mood. No visible text."
+            class="burger-image" onclick="openModal('img/pixel-patty.png', 'Pixel Patty')">
+          <div class="menu-item-content">
+            <h3>Pixel Patty</h3>
+            <p>Uma explosão de sabores em cada mordida, como pixels se unindo para formar uma imagem perfeita. Pão
+              australiano, hambúrguer de frango empanado, queijo mussarela, bacon crocante, cebola caramelizada e um
+              molho agridoce de pimenta, criando uma paleta de sabores vibrante.</p>
+          </div>
+          <div class="burger-price">R$ 34,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/quantum-quinoa.png"
+            alt="Quantum Quinoa vegan burger with quinoa and mushroom patty, vegan cheese, arugula, pickled cucumber, and basil pesto on whole wheat bread, placed on a rustic table in a bright, eco-friendly restaurant. The burger appears fresh and healthy, conveying a sense of innovation and well-being. No visible text."
+            class="burger-image" onclick="openModal('img/quantum-quinoa.png', 'Quantum Quinoa')">
+          <div class="menu-item-content">
+            <h3>Quantum Quinoa</h3>
+            <p>Para os que buscam uma experiência leve e inovadora, este hambúrguer vegano desafia as leis da física.
+              Pão integral, hambúrguer de quinoa e cogumelos, queijo vegano, rúcula, pepino em conserva e um molho pesto
+              de manjericão, proporcionando uma fusão de texturas e frescor.</p>
+          </div>
+          <div class="burger-price">R$ 37,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/circuit-cheese.png"
+            alt="Circuit Cheese beef burger with beer bread, melted cheese blend, onion rings, and spicy barbecue sauce served on a ceramic plate in a cozy restaurant. The burger is topped with golden onion rings and melted cheese, creating a rich and indulgent atmosphere. No visible text."
+            class="burger-image" onclick="openModal('img/circuit-cheese.png', 'Circuit Cheese')">
+          <div class="menu-item-content">
+            <h3>Circuit Cheese</h3>
+            <p>Uma conexão perfeita de queijos que energiza o paladar. Pão de cerveja, hambúrguer de carne bovina, uma
+              combinação de queijos prato, provolone e gorgonzola derretidos, anéis de cebola empanados e um molho
+              barbecue picante, criando um circuito de sabor intenso.</p>
+          </div>
+          <div class="burger-price">R$ 42,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/neural-noodle.png"
+            alt="Neural Noodle pulled pork burger with sesame bun, purple cabbage and carrot coleslaw, crispy sweet potato, and teriyaki ginger sauce on a slate plate in a contemporary restaurant. The burger is colorful and artistic, evoking curiosity and excitement. No visible text."
+            class="burger-image" onclick="openModal('img/neural-noodle.png', 'Neural Noodle')">
+          <div class="menu-item-content">
+            <h3>Neural Noodle</h3>
+            <p>Uma rede complexa de sabores que estimula os sentidos, como uma rede neural em pleno funcionamento. Pão
+              de gergelim, hambúrguer de carne suína desfiada, coleslaw de repolho roxo e cenoura, crispy de batata doce
+              e um molho teriyaki com gengibre, oferecendo uma experiência asiática e inovadora.</p>
+          </div>
+          <div class="burger-price">R$ 49,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/data-stream-deluxe.png"
+            alt="Data Stream Deluxe double Angus beef burger with chia seed bun, Swiss cheese, grilled portobello mushrooms, wild arugula, sun-dried tomatoes, caramelized red onions, and Dijon honey mustard sauce on a stylish plate in an upscale restaurant. The burger looks luxurious and sophisticated, suggesting a premium dining experience. No visible text."
+            class="burger-image" onclick="openModal('img/data-stream-deluxe.png', 'Data Stream Deluxe')">
+          <div class="menu-item-content">
+            <h3>Data Stream Deluxe</h3>
+            <p>Uma experiência premium que processa sabores em alta velocidade. Pão artesanal com sementes de chia,
+              duplo hambúrguer de carne angus, queijo suíço derretido, cogumelos portobello grelhados, rúcula selvagem,
+              tomate seco, cebola roxa caramelizada e um molho especial de mostarda dijon com mel, criando um fluxo
+              contínuo de sabores sofisticados que conecta tradição e inovação em cada mordida.</p>
+          </div>
+          <div class="burger-price">R$ 55,90</div>
+        </div>
+      </div>
+    </section>
+    <section id="sobremesas">
+      <h2>Sobremesas</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="img/cloud-storage-sundae.png"
+            alt="Cloud Storage Sundae with vanilla ice cream, hot Belgian chocolate sauce, whipped cream, brownie pieces, caramelized nuts, and a cherry on top served in a glass bowl on a marble table in a cheerful dessert shop. The sundae looks decadent and joyful, inviting indulgence. No visible text."
+            class="sobremesa-image" onclick="openModal('img/cloud-storage-sundae.png', 'Cloud Storage Sundae')">
+          <div class="menu-item-content">
+            <h3>Cloud Storage Sundae</h3>
+            <p>Uma sobremesa que armazena camadas infinitas de sabor. Sorvete de baunilha premium, calda quente de
+              chocolate belga, chantilly aerado, pedaços crocantes de brownie, castanhas caramelizadas e uma cereja
+              digital no topo.</p>
+          </div>
+          <div class="sobremesa-price">R$ 19,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/pixel-parfait.png"
+            alt="Pixel Parfait with layers of berry mousse, mascarpone cream, cookies and cream biscuit, strawberry jam, and crunchy granola in a tall glass on a wooden table in a bright café. The parfait is colorful and neatly layered, creating a sense of harmony and delight. No visible text."
+            class="sobremesa-image" onclick="openModal('img/pixel-parfait.png', 'Pixel Parfait')">
+          <div class="menu-item-content">
+            <h3>Pixel Parfait</h3>
+            <p>Camadas alternadas de mousse de frutas vermelhas, creme de mascarpone, biscoito cookies & cream, geleia
+              de morango artesanal e granola crocante, criando um mosaico de sabores que se conectam perfeitamente.</p>
+          </div>
+          <div class="sobremesa-price">R$ 22,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/binary-brownie.png"
+            alt="Binary Brownie with warm dark chocolate brownie, vanilla ice cream, salted caramel sauce, toasted pecans, and a sprinkle of sea salt served on a white plate in a cozy dessert bar. The dessert looks rich and comforting, evoking warmth and happiness. No visible text."
+            class="sobremesa-image" onclick="openModal('img/binary-brownie.png', 'Binary Brownie')">
+          <div class="menu-item-content">
+            <h3>Binary Brownie</h3>
+            <p>Brownie de chocolate meio amargo aquecido, acompanhado de sorvete de creme, calda de caramelo salgado,
+              nozes pecã tostadas e uma pitada de flor de sal.</p>
+          </div>
+          <div class="sobremesa-price">R$ 15,90</div>
+        </div>
+        <div class="menu-item">
+          <img src="img/wifi-waffle.png"
+            alt="WiFi Waffle Belgian waffle with melted Nutella, caramelized banana, fresh strawberries, whipped cream, and powdered sugar served on a decorative plate in a lively café. The waffle is beautifully arranged and festive, creating a sense of fun and celebration. No visible text."
+            class="sobremesa-image" onclick="openModal('img/wifi-waffle.png', 'WiFi Waffle')">
+          <div class="menu-item-content">
+            <h3>WiFi Waffle</h3>
+            <p>Waffle belga crocante, Nutella derretida, banana caramelizada, morangos frescos, chantilly e uma chuva de
+              açúcar de confeiteiro.</p>
+          </div>
+          <div class="sobremesa-price">R$ 24,90</div>
+        </div>
+      </div>
+    </section>
+    </div>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <p>Entre em contato conosco para fazer seu pedido ou tirar dúvidas!</p>
+      <p>Telefone: (14) 9999-9999</p>
+      <p>Email: contato@burguerhub.com</p>
     </section>
   </main>
 
+
+
+
   <div id="footer"></div>
 </body>
+
 </html>
