@@ -1,0 +1,589 @@
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../img/background-pattern.png");
+    background-repeat: repeat;
+    background-size: 300px;
+    background-attachment: fixed;
+    color: #000;
+    line-height: 1.6;
+}
+
+/* CABEÇALHO */
+header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.11);
+    z-index: 1000;
+    padding: 10px 20px;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+}
+.logo { height: 90px; border-radius: 50%; }
+nav ul { display:grid; gap: 2px; list-style: none; }
+nav a { text-decoration: none; color: #000; font-weight: bold; }
+.menu-toggle { display: none; font-size: 28px; cursor: pointer; background: none; border: none; }
+
+    /*Mudar a cor do link ativo*/
+    nav a {
+        position: relative;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 2px;
+        background-color: #d35400;
+        transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #d35400;
+    }
+
+    nav a:hover::after {
+        width: 100%;
+    }
+
+    /* rolagem suave e compensar header fixo */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ajuste esse valor para a altura real do seu header (ex.: 70px, 80px, 90px) */
+    :root {
+      --header-height: 80px;
+    }
+
+    /* aplica deslocamento ao rolar para qualquer section com id */
+    section {
+      scroll-margin-top: calc(var(--header-height) + 12px); /* 12px de folga visual */
+    }
+
+
+/* SEÇÕES */
+section {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.menu-item img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.burger-price, .sobremesa-price {
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: auto;
+}
+
+/* SACOLA DE COMPRAS */
+
+    .sacola-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+
+    .fechar-sacola {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+    }
+
+    .fechar-sacola:hover {
+    color: #d35400;
+    }
+
+    .sacola {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2000;
+    }
+
+    .sacola.ativa {
+    transform: translateX(0);
+    }
+
+    #sacola-itens {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    }
+
+    #sacola-itens li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    }
+
+    .sacola-abrir {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #d35400;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    }
+
+    .sacola-abrir:hover {
+    background: #e67e22;
+    }
+
+/* Botão flutuante da sacola */
+    #btn-sacola-flutuante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #d35400;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2100; /* importante para ficar acima de tudo */
+    }
+
+/*Imagens dentro da sacola*/
+    .sacola-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 10px;
+    vertical-align: middle;
+    }
+    #sacola-itens li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    }
+    #sacola-itens li div {
+    display: flex;
+    gap: 5px;
+    }
+
+
+/*Estilizando o contador*/
+.sacola-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #d35400, #e67e22);
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sacola-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+#contador-sacola {
+  background: #fff;
+  color: #d35400;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  margin-left: 4px;
+  border-radius: 12px;
+}
+
+/* BOTÕES "ADICIONAR À SACOLA" */
+    .menu-item button {
+    background: #d35400;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .menu-item button:hover {
+    background: #e67e22;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+/* BOTÕES DE QUANTIDADE (+ / -) */
+    #sacola-itens button {
+    background: #f39c12;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    }
+
+    #sacola-itens button:hover {
+    background: #e67e22;
+    }
+
+/* Estilo botão limpar sacola */
+    .btn-limpar {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s ease;
+    }
+
+    .btn-limpar:hover {
+    background: #c0392b;
+    }
+
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    z-index: 3000;
+}
+.modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* ESTILO MELHORADO PARA O BOTÃO X DO MODAL */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.close:hover {
+    color: #333;
+    background: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.close:active {
+    transform: scale(0.95);
+}
+
+/* FORMULÁRIO */
+#contato textarea {
+    font-family: Arial, sans-serif;
+}
+.contato-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.contato-form input, .contato-form textarea {
+    padding: 12px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 1rem; background: #fafafa; transition: all 0.3s ease;
+}
+.contato-form input:focus, .contato-form textarea:focus {
+    border-color: #d35400; background: #fff; box-shadow: 0 0 0 3px rgba(211,84,0,0.15); outline: none;
+}
+.btn-enviar {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-enviar:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(211,84,0,0.4); }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; position: absolute; top: 70px; right: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    nav ul.show { display: flex; }
+    section { margin: 10px; padding: 15px; }
+    
+    /* Ajustes do modal para mobile */
+    .modal-content {
+        max-width: 95%;
+        margin: 10px;
+    }
+    
+    .close {
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+    }
+}
+
+:root {
+  --header-height: 0px; /* será atualizada pelo JS */
+}
+section {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+html { scroll-behavior: smooth; }
+
+/* Esconder elementos */
+.hidden {
+    display: none !important;
+}
+
+/* ESTILO MELHORADO PARA O MODAL DE ENTREGA */
+#modalEntrega .modal-content {
+    text-align: center;
+    padding: 30px;
+    min-width: 400px;
+    max-width: 500px;
+}
+
+#modalEntrega h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+.opcoes-entrega {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-entrega {
+    background: #d35400;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.btn-entrega:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
+}
+
+/* ESTILO MELHORADO DO FORMULÁRIO DE ENDEREÇO */
+#enderecoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#enderecoForm p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#enderecoForm input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+#enderecoForm input:focus {
+    border-color: #d35400;
+    box-shadow: 0 0 0 3px rgba(211, 84, 0, 0.15);
+    outline: none;
+}
+
+#enderecoForm input::placeholder {
+    color: #999;
+}
+
+#enderecoForm .btn-enviar {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+/* ESTILO OPÇÕES DE PAGAMENTO */
+.opcoes-pagamento {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.opcoes-pagamento h4 {
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #333;
+}
+
+.opcoes-pagamento .item-pagamento {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Espaço entre as opções */
+    cursor: pointer;
+}
+
+.opcoes-pagamento input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.1); /* Botão de rádio um pouco maior */
+    cursor: pointer;
+}
+
+.opcoes-pagamento label {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.opcoes-pagamento .item-pagamento:hover label {
+    color: #d35400; /* Cor ao passar o mouse */
+}
+
+/* Responsividade para o modal de entrega */
+@media (max-width: 768px) {
+    #modalEntrega .modal-content {
+        min-width: auto;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .opcoes-entrega {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-entrega {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    #enderecoForm {
+        padding: 15px;
+    }
+}
+
+/* NOTIFICAÇÃO DE ADICIONADO À SACOLA */
+.notificacao-sacola {
+    position: fixed;
+    top: -100px; /* Começa acima da tela */
+    right: 20px;
+    background-color: #4CAF50; /* Cor verde para sucesso */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 0 0 8px 8px; /* Cantos arredondados apenas na parte de baixo */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 5000;
+    transition: top 0.5s ease-in-out;
+}
+
+.notificacao-sacola.show {
+    top: 0; /* Desliza para dentro da tela */
+}
