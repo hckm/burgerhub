@@ -213,7 +213,7 @@ section {
     cursor: pointer;
 }
 
-.burger-price, .sobremesa-price, ,.bebida-price {
+.burger-price, .sobremesa-price, .bebida-price {
     font-weight: bold;
     color: #27ae60;
     margin-top: auto;
