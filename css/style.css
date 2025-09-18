@@ -1,3 +1,6 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Righteous:wght@400&family=Russo+One:wght@400&display=swap');
+
 /* RESET */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -10,68 +13,93 @@ body {
     line-height: 1.6;
 }
 
+
+h1, h2, h3, .menu-item h3 {
+    font-family: 'Righteous', cursive;
+    letter-spacing: 0.5px;
+}
+
 /* CABEÇALHO */
 header {
     position: sticky;
     top: 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 8px 32px rgba(211, 84, 0, 0.15);
     z-index: 1000;
     padding: 10px 20px;
+    border-bottom: 1px solid rgba(211, 84, 0, 0.1);
 }
 .header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     max-width: 1100px;
+    gap: 15px;
+    position: relative;
 }
-.logo { height: 90px; border-radius: 50%; }
-nav ul { display:grid; gap: 2px; list-style: none; }
-nav a { text-decoration: none; color: #000; font-weight: bold; }
+
+.logo-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+}
+.logo { 
+    height: 65px; 
+    border-radius: 50%; 
+    margin-right: 5px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+nav ul { 
+    display: flex; 
+    gap: 35px; 
+    list-style: none; 
+    align-items: center;
+}
+nav a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
 .menu-toggle { display: none; font-size: 28px; cursor: pointer; background: none; border: none; }
 
-    /*Mudar a cor do link ativo*/
-    nav a {
-        position: relative;
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
 
-    nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 0;
-        height: 2px;
-        background-color: #d35400;
-        transition: width 0.3s ease;
+    nav a:hover::before {
+        left: 100%;
     }
 
     nav a:hover {
         color: #d35400;
+        background: rgba(211, 84, 0, 0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(211, 84, 0, 0.2);
     }
 
-    nav a:hover::after {
-        width: 100%;
-    }
-
-    /* rolagem suave e compensar header fixo */
+    /* aqui fica a rolagem suave e compensar header fixo */
     html {
       scroll-behavior: smooth;
     }
 
-    /* ajuste esse valor para a altura real do seu header (ex.: 70px, 80px, 90px) */
+    /* fiz esse valor para a altura real do header (ex.: 70px, 80px, 90px) */
     :root {
       --header-height: 80px;
     }
 
-    /* aplica deslocamento ao rolar para qualquer section com id */
+    /* aqui aplica deslocamento ao rolar para qualquer section com id */
     section {
       scroll-margin-top: calc(var(--header-height) + 12px); /* 12px de folga visual */
     }
@@ -85,6 +113,82 @@ section {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* seção "SOBRE" com design adaptado do Gabriel  */
+#sobre {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(211, 84, 0, 0.37);
+}
+
+#sobre::before {
+    content: "🍔";
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    opacity: 0.4;
+    z-index: 1;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+#sobre h2 {
+    color: #f58b53;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+}
+
+#sobre p {
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+/* ANIMAÇÃO DE FADE IN */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aqui fica o efeito de parallax ao SCROLL DO MOUSE  */
+.parallax-element {
+    animation-delay: 0.2s;
+}
+
+.parallax-element:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.parallax-element:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.parallax-element:nth-child(4) {
+    animation-delay: 0.8s;
 }
 
 .menu-grid {
@@ -342,7 +446,7 @@ section {
     position: relative;
 }
 
-/* ESTILO MELHORADO PARA O BOTÃO X DO MODAL */
+/* Estilo Melhorado Para o botão X DO MODAL */
 .close {
     position: absolute;
     top: 15px;
@@ -393,12 +497,62 @@ section {
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    nav ul { display: none; flex-direction: column; position: absolute; top: 70px; right: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    .menu-toggle { 
+        display: block; 
+        position: absolute;
+        right: 0;
+        z-index: 1001;
+    }
+    
+    .header-container {
+        justify-content: center;
+    }
+    
+    .logo-titulo {
+        gap: 8px;
+    }
+    
+    nav ul { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 70px; 
+        right: 20px; 
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px; 
+        border-radius: 15px; 
+        box-shadow: 0 8px 25px rgba(211, 84, 0, 0.2);
+        gap: 10px;
+    }
     nav ul.show { display: flex; }
     section { margin: 10px; padding: 15px; }
     
-    /* Ajustes do modal para mobile */
+    .logo {
+        height: 55px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    #sobre h2 {
+        font-size: 1.8rem;
+    }
+    
+    #sobre::before {
+        font-size: 2rem;
+        top: 15px;
+        right: 20px;
+    }
+    
+    /* Aqui fica os ajustes do modal para mobile */
     .modal-content {
         max-width: 95%;
         margin: 10px;
@@ -586,4 +740,10 @@ html { scroll-behavior: smooth; }
 
 .notificacao-sacola.show {
     top: 0; /* Desliza para dentro da tela */
+}
+
+footer{
+    text-align: center;
+    color: #eee;
+    background-color: #353535;
 }
