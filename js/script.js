@@ -175,6 +175,7 @@ function abrirModalEntrega() {
     alert("Sua sacola está vazia!");
     return;
   }
+  document.getElementById("sacola").classList.remove("ativa");
   document.getElementById("modalEntrega").style.display = "flex";
 }
 
